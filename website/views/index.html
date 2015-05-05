@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Robot Control</title>
+    <link rel="stylesheet" href="/website/css/index.css">
+    <script type="text/javascript" src="/website/packages/angular/angular.js"></script>
+    <script type="text/javascript" src="/website/js/modules.js"></script>
+    <script type="text/javascript" src="/website/js/mainCtrl.js"></script>
+    <script type="text/javascript" src="/website/js/services/sensorsService.js"></script>
+</head>
+<body ng-app="RobotControl">
+<div ng-controller="MainCtrl">
+
+    <h2>Compass</h2>
+
+    <div>
+        Heading: {{heading}}
+    </div>
+    <div>
+        Pitch: {{pitch}}
+    </div>
+    <div>
+        Roll: {{roll}}
+    </div>
+    <h2>Magnetometer calibration</h2>
+
+    <div>
+        <div>Min</div>
+        X: {{calibration.min.x}},Y: {{calibration.min.y}},Z: {{calibration.min.z}}
+        <div>Max</div>
+        X: {{calibration.max.x}},Y: {{calibration.max.y}},Z: {{calibration.max.z}}
+    </div>
+
+    <button ng-click="startPolling()">Start Refresh</button>
+    <button ng-click="stopPolling()">Stop Refresh</button>
+</div>
+</body>
+</html>

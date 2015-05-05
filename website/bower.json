@@ -1,0 +1,9 @@
+{
+  "name": "RobotControl",
+  "version": "0.0.0",
+  "authors": [
+    "Soulskater <gmeszaros007@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true
+}
