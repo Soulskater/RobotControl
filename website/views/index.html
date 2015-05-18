@@ -32,8 +32,31 @@
         X: {{calibration.max.x}},Y: {{calibration.max.y}},Z: {{calibration.max.z}}
     </div>
 
-    <button ng-click="startPolling()">Start Refresh</button>
-    <button ng-click="stopPolling()">Stop Refresh</button>
+    <h2>Distance meter</h2>
+    <button ng-click="startPollingDistanceMeter()">Start Refresh Distance</button>
+    <button ng-click="stopPollingDistanceMeter()">Stop Refresh Distance</button>
+    <div>
+        <div>Distance</div>
+        {{distance}}
+    </div>
+
+    <button ng-click="startPollingCompass()">Start Refresh</button>
+    <button ng-click="stopPollingCompass()">Stop Refresh</button>
+
+    <h2>Calculate distance from wifi</h2>
+
+    <div>
+        <div>Signal in Db</div>
+        <input type="number" ng-model="signalLevel">
+
+        <div>Frequency in Mhz</div>
+        <input type="number" ng-model="frequency">
+
+        <div>
+            {{distanceFromWifi}}
+        </div>
+        <button ng-click="calculateWifiDistance(signalLevel, frequency)">Calculate</button>
+    </div>
 </div>
 </body>
 </html>

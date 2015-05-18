@@ -13,9 +13,9 @@ if len(sys.argv) <= 1:
 
 servoDirection = sys.argv[1]
 # Initialise the PWM device using the default address
-pwm = PWM(0x40)
+# pwm = PWM(0x40)
 # Note if you'd like more debug output you can instead run:
-#pwm = PWM(0x40, debug=True)
+pwm = PWM(0x40, debug=True)
 
 servoMin = 150  # Min pulse length out of 4096
 servoMax = 850  # Max pulse length out of 4096

@@ -1,5 +1,5 @@
-var magnetometer = require('../sensors/magnetometer/magnetometer');
-var accelerometer = require('../sensors/accelerometer/accelerometer');
+var magnetometer = require('../sensors/magnetometer/magnetometerService');
+var accelerometer = require('../sensors/accelerometer/accelerometerService');
 var vector = require('../../common/vector');
 var q = require('q');
 var path = require('path');

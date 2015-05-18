@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var servoDriver = require('../../services/servo/driver');
+var servoDriver = require('../../services/servo/driverService');
 
 router.get('/:direction', function (req, res) {
     if (!req.params.direction) {

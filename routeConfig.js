@@ -14,6 +14,10 @@ var apiRoutes = [
         content: require('./api/sensors/accelerometer/accelerometerApi')
     },
     {
+        path: '/api/sensors/distancemeter/',
+        content: require('./api/sensors/distancemeter/distancemeterApi')
+    },
+    {
         path: '/api/sensors/compass/',
         content: require('./api/compass/compassApi')
     }

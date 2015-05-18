@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var magnetometer = require('../../../services/sensors/magnetometer/magnetometer');
+var magnetometer = require('../../../services/sensors/magnetometer/magnetometerService');
 
 router.get('/', function (req, res) {
     magnetometer.readData()

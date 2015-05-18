@@ -44,10 +44,17 @@ angular.module("RobotControl")
             });
         }
 
+        function _getDistancemeterData() {
+            return $http.get("/api/sensors/distancemeter").then(function (response) {
+                return response.data;
+            });
+        }
+
         return {
             getMagnetometerData: _getMagnetometerData,
             getCalibration: _getCalibration,
             getAccelerometerData: _getAccelerometerData,
+            getDistancemeterData: _getDistancemeterData,
             getHeading: _getHeading,
             getPitch: _getPitch,
             getRoll: _getRoll
