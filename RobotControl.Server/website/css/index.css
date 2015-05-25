@@ -1,0 +1,23 @@
+@font-face {
+  font-family: metro-font;
+  src: url(../fonts/weblysleekuil.ttf);
+}
+body {
+  margin: 0;
+}
+.header {
+  height: 50px;
+  color: #ffffff;
+  background: #9612D7;
+  padding: 15px;
+}
+.group {
+  padding: 10px;
+  color: #ffffff;
+  background: #00A9FF;
+}
+button {
+  color: #ffffff;
+  background: #9612D7;
+  margin: 5px;
+}

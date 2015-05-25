@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Robot Control</title>
+    <link rel="stylesheet" href="/website/css/index.css">
+    <link rel="stylesheet" href="/website/css/common.css">
+    <script type="text/javascript" src="/website/packages/angular/angular.js"></script>
+    <script type="text/javascript" src="/website/js/modules.js"></script>
+    <script type="text/javascript" src="/website/js/mainCtrl.js"></script>
+    <script type="text/javascript" src="/website/js/services/sensorsService.js"></script>
+</head>
+<body ng-app="RobotControl">
+<div ng-controller="MainCtrl">
+    <div class="font-l header">
+        Robot Management
+    </div>
+    <div class="group">
+        <div class="font-m">Telemetry data</div>
+        <div class="text-space l left">
+            <div class="font-s">Orientation</div>
+            <div class="font-xs text-space m left">
+                Roll: {{orientation.roll}}, Pitch: {{orientation.pitch}}, Heading: {{orientation.heading}}
+            </div>
+            <div class="font-s space m top">Distance</div>
+            <div class="font-xs text-space m left">
+                {{distance}}
+            </div>
+        </div>
+        <button class="btn-m" ng-click="startPolling()">Start Polling</button>
+        <button class="btn-m" ng-click="stopPolling()">Stop Polling</button>
+    </div>
+</div>
+</body>
+</html>

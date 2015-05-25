@@ -1,0 +1,235 @@
+/*Font*/
+@font-face {
+    font-family: metro-font;
+    src: url(../fonts/weblysleekuil.ttf);
+}
+
+.font-xs {
+    font-family: metro-font;
+    font-size: 14px;
+}
+
+.font-s {
+    font-family: metro-font;
+    font-size: 1.1rem;
+}
+
+.font-m {
+    font-family: metro-font;
+    font-size: 1.5rem;
+}
+
+.font-l {
+    font-family: metro-font;
+    font-size: 2.0rem;
+}
+
+.font-xl {
+    font-family: metro-font;
+    font-size: 2.5rem;
+}
+
+.space {
+    &.s {
+        &.all {
+            margin: 5px;
+        }
+        &.top {
+            margin-top: 5px;
+        }
+        &.right {
+            margin-right: 5px;
+        }
+        &.bottom {
+            margin-bottom: 5px;
+        }
+        &.left {
+            margin-left: 5px;
+        }
+    }
+    &.m {
+        &.all {
+            margin: 10px;
+        }
+        &.top {
+            margin-top: 10px;
+        }
+        &.right {
+            margin-right: 10px;
+        }
+        &.bottom {
+            margin-bottom: 10px;
+        }
+        &.left {
+            margin-left: 10px;
+        }
+    }
+    &.l {
+        &.all {
+            margin: 15px;
+        }
+        &.top {
+            margin-top: 15px;
+        }
+        &.right {
+            margin-right: 15px;
+        }
+        &.bottom {
+            margin-bottom: 15px;
+        }
+        &.left {
+            margin-left: 15px;
+        }
+    }
+    &.xl {
+        &.all {
+            margin: 25px;
+        }
+        &.top {
+            margin-top: 25px;
+        }
+        &.right {
+            margin-right: 25px;
+        }
+        &.bottom {
+            margin-bottom: 25px;
+        }
+        &.left {
+            margin-left: 25px;
+        }
+    }
+}
+
+.text-space {
+    &.s {
+        &.all {
+            padding: 5px;
+        }
+        &.top {
+            padding-top: 5px;
+        }
+        &.right {
+            padding-right: 5px;
+        }
+        &.bottom {
+            padding-bottom: 5px;
+        }
+        &.left {
+            padding-left: 5px;
+        }
+    }
+    &.m {
+        &.all {
+            padding: 10px;
+        }
+        &.top {
+            padding-top: 10px;
+        }
+        &.right {
+            padding-right: 10px;
+        }
+        &.bottom {
+            padding-bottom: 10px;
+        }
+        &.left {
+            padding-left: 10px;
+        }
+    }
+    &.l {
+        &.all {
+            padding: 15px;
+        }
+        &.top {
+            padding-top: 15px;
+        }
+        &.right {
+            padding-right: 15px;
+        }
+        &.bottom {
+            padding-bottom: 15px;
+        }
+        &.left {
+            padding-left: 15px;
+        }
+    }
+    &.xl {
+        &.all {
+            padding: 25px;
+        }
+        &.top {
+            padding-top: 25px;
+        }
+        &.right {
+            padding-right: 25px;
+        }
+        &.bottom {
+            padding-bottom: 25px;
+        }
+        &.left {
+            padding-left: 25px;
+        }
+    }
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.clear-all {
+    clear: both;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 0 5px;
+    display: inline-block;
+
+    &-s:extend(.btn) {
+        height: 25px;
+        line-height: 25px;
+        min-width: 80px;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    &-m:extend(.btn) {
+        height: 30px;
+        line-height: 30px;
+        min-width: 100px;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    &-l:extend(.btn) {
+        height: 40px;
+        line-height: 40px;
+        min-width: 100px;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+@max-height: 600px;

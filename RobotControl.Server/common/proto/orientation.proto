@@ -1,0 +1,5 @@
+message Orientation {
+  required int32 roll = 1;
+  required int32 pitch = 2;
+  required int32 heading = 3;
+}
