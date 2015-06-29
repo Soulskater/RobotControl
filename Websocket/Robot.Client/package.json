@@ -1,0 +1,10 @@
+{
+  "name": "Robot.Client",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.4.1"
+  }
+}

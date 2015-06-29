@@ -219,3 +219,4 @@ pip-log.txt
 .idea/
 node_modules/
 website/packages/
+**/packages

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Robot Web Control</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/packages/angular-material/angular-material.css"/>
+
+    <script src="/packages/angular/angular.js"></script>
+    <script src="/packages/angular-route/angular-route.js"></script>
+    <script src="/packages/angular-loader/angular-loader.js"></script>
+    <script src="/packages/angular-mocks/angular-mocks.js"></script>
+    <script src="/packages/angular-resource/angular-resource.js"></script>
+    <script src="/packages/angular-animate/angular-animate.js"></script>
+    <script src="/packages/angular-aria/angular-aria.js"></script>
+    <script src="/packages/angular-material/angular-material.js"></script>
+    <script src="/packages/bytebuffer/dist/ByteBufferAB.js"></script>
+    <script src="/packages/long/dist/Long.js"></script>
+    <script src="/packages/protobuf/dist/ProtoBuf.js"></script>
+
+    <script src="infrastructure/js/module.js"></script>
+    <script src="infrastructure/js/routeConfig.js"></script>
+    <script src="infrastructure/js/protoTypes.js"></script>
+    <script src="infrastructure/js/serverConfig.js"></script>
+    <script src="infrastructure/js/webSocketService.js"></script>
+    <script src="infrastructure/js/protoBufService.js"></script>
+
+    <link rel="stylesheet" href="src/components/dashboard/less/dashboard.css"/>
+    <script src="src/components/dashboard/js/dashboardCtrl.js"></script>
+</head>
+<body ng-app="RobotControl">
+<div ng-view></div>
+</body>
+</html>
