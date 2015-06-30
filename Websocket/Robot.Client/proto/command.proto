@@ -1,0 +1,3 @@
+message Command {
+    required string name = 1;
+}

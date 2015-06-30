@@ -1,0 +1,3 @@
+message Distance {
+    required int32 value = 1;
+}
