@@ -1,17 +1,17 @@
-var socketIo = require('socket.io-client');
-var protoHelper = require('./protoBufHelper');
-var protoConfig = require('./protoBufConfig');
-
+var eventEnum = require('../Robot.Common/enums/eventEnum');
+var protoBufConfig = require('../Robot.Common/protoBufConfig');
+var protoBufHelper = require('../Robot.Common/protoBufHelper');
+var socketService = require('./services/socketService');
 var _serverAddress = "ws://localhost:8090";
-var _socket = socketIo(_serverAddress);
+var commandService = require('./services/commandService');
 
-_socket.on('connect', function () {
-    console.log("Connected to " + _serverAddress);
+socketService.connect(_serverAddress);
+
+socketService.on(eventEnum.command, function (byteData) {
+    var command = protoBufHelper.decode(protoBufConfig.command, byteData);
+    if (!command) {
+        console.warn("Invalid data sent from the server");
+        return;
+    }
+    commandService.processCommand(command.name, command.subCommand);
 });
-
-_socket.on('command', function (data) {
-    var command = protoHelper.decode(protoConfig.command, data);
-    console.log(command.name);
-});
-
-_socket.emit("command", protoHelper.encode(protoConfig.command, {name: "move"}));

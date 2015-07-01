@@ -16,5 +16,5 @@ module.exports = {
 };
 
 function _loadProtoBuilder(fileName) {
-    return protoBuf.loadProtoFile(path.join(__dirname, "./proto/", fileName));
+    return protoBuf.loadProtoFile(path.join(__dirname, "./protos/", fileName));
 }

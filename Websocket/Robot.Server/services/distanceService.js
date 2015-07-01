@@ -1,4 +1,3 @@
-var socketService = require("./webSocketService");
 var protoBuf = require("protobufjs");
 var path = require("path");
 
