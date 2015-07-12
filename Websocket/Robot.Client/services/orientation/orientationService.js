@@ -2,9 +2,9 @@ var sudo = require('sudo');
 var q = require('q');
 var path = require('path');
 
-var pythonServoControlFile = path.join(__dirname, '../../python/Distancemeter.py');
+var pythonServoControlFile = path.join(__dirname, '../../python/orientation.py');
 module.exports = {
-    readData: function () {
+    getOrientation: function () {
         var deferred = q.defer();
 
         var python = sudo(['python', pythonServoControlFile], {
@@ -18,13 +18,12 @@ module.exports = {
             if (code !== 0) {
                 deferred.reject(code);
             }
-            var distance = parseFloat(output);
-            if (isNaN(distance)) {
-                deferred.reject("The measurement is not a number got, " + distance);
-            }
-            else {
-                deferred.resolve(Math.floor(distance));
-            }
+            var dataArray = JSON.parse(output);
+            deferred.resolve({
+                roll: Math.floor(dataArray[0]),
+                pitch: Math.floor(dataArray[1]),
+                heading: Math.floor(dataArray[2])
+            });
         });
 
         return deferred.promise;

@@ -7,14 +7,14 @@ angular.module("RobotControl")
             });
         }
 
-        function _getDistancemeterData() {
-            return $http.get("/api/sensors/distancemeter").then(function (response) {
+        function _getDistance() {
+            return $http.get("/api/sensors/distance").then(function (response) {
                 return response.data;
             });
         }
 
         return {
             getOrientation: _getOrientation,
-            getDistancemeterData: _getDistancemeterData,
+            getDistance: _getDistance
         };
     }]);

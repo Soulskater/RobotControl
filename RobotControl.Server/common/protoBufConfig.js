@@ -6,5 +6,9 @@ module.exports = {
     orientation: {
         fileName: "orientation.proto",
         modelName: "Orientation"
+    },
+    distance: {
+        fileName: "distance.proto",
+        modelName: "Distance"
     }
 };

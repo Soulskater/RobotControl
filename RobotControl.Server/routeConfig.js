@@ -4,6 +4,10 @@ var apiRoutes = [
     {
         path: '/api/sensors/orientation/',
         content: require('./api/orientation/orientationApi')
+    },
+    {
+        path: '/api/sensors/distance/',
+        content: require('./api/distance/distanceApi')
     }
 ];
 

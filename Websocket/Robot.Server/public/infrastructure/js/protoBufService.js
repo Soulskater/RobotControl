@@ -1,4 +1,4 @@
-angular.module("RobotControl").service("protoBufService", ["protoTypes", function (protoTypes) {
+angular.module("RobotControl").service("protoBufService", ["protoConfig", function (protoConfig) {
     if (typeof dcodeIO === 'undefined' || !dcodeIO.ProtoBuf) {
         throw(new Error("ProtoBuf.js is not loaded"));
     }
@@ -10,15 +10,16 @@ angular.module("RobotControl").service("protoBufService", ["protoTypes", functio
         if (protoLoaded) {
             return;
         }
-        for (var protoTypeProp in protoTypes) {
-            if (protoTypes.hasOwnProperty(protoTypeProp)) {
-                var protoType = protoTypes[protoTypeProp];
-                _protoBuf.loadProtoFile("./proto/" + protoType.file, function (error, proto) {
+        for (var protoTypeProp in protoConfig) {
+            if (protoConfig.hasOwnProperty(protoTypeProp)) {
+                var protoType = protoConfig[protoTypeProp];
+                _protoBuf.loadProtoFile("./proto/" + protoType.fileName, function (error, proto) {
                     if (error) {
                         throw(new Error(error));
                     }
                     if (proto) {
-                        loadedProtos[protoType.name] = proto.build(protoType.name);
+                        var modelName = proto.ptr.children[0].name;
+                        loadedProtos[modelName] = proto.build(modelName);
                     }
                 });
             }
@@ -30,12 +31,23 @@ angular.module("RobotControl").service("protoBufService", ["protoTypes", functio
         if (!protoLoaded) {
             throw(new Error("ProtoBuf files are not loaded"));
         }
-        return loadedProtos[protoType.name];
+        return loadedProtos[protoType.modelName];
+    }
+
+    function _encode(protoConfig, data) {
+        var proto = _getProto(protoConfig);
+        var protoData = new proto(data);
+        return protoData.toBuffer();
+    }
+
+    function _decode(protoConfig, buffer) {
+        var proto = _getProto(protoConfig);
+        return proto.decode(buffer);
     }
 
     return {
-        protoBuf: _protoBuf,
-        loadProtos: _loadProtoFiles,
-        getProto: _getProto
+        encode: _encode,
+        decode: _decode,
+        loadProtos: _loadProtoFiles
     };
 }]);

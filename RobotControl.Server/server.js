@@ -17,6 +17,7 @@ module.exports = {
             var _client = mqtt.connect(config);
             _client.on('connect', function () {
                 _client.subscribe(topicEnum.orientation);
+                _client.subscribe(topicEnum.distance);
                 _clientConnectedDeferred.resolve(_client);
             });
 

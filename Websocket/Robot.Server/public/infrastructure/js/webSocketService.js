@@ -1,37 +1,37 @@
-angular.module("RobotControl").service("webSocketService", ["protoTypes", "serverConfig", "protoBufService", function (protoTypes, serverConfig, protoBufService) {
+angular.module("RobotControl").service("webSocketService", ["protoConfig", "serverConfig", "protoBufService", "eventEnum", function (protoConfig, serverConfig, protoBufService, eventEnum) {
 
-    var socket = new WebSocket(serverConfig.serverAddress);
-    socket.binaryType = "arraybuffer";
-    function _send(data) {
-        if (socket.readyState == WebSocket.OPEN) {
-            var proto = protoBufService.getProto(protoTypes.message);
-            var dataToSend = new proto(data);
-            socket.send(dataToSend.toArrayBuffer());
-            console.log("Sent: " + data);
+    var socketServer = io(serverConfig.serverAddress);
+
+    function _emit(event, data) {
+        if (socketServer.connected) {
+            var buffer = protoBufService.encode(protoConfig[event], data);
+            if (!buffer) {
+                throw Error("Not supported event type " + event);
+            }
+            socketServer.emit(event, buffer);
+            console.log("Sent", data);
         } else {
-            console.log("Not connected");
+            console.log("Client not connected");
         }
     }
 
-    socket.onopen = function () {
-        console.log("Connected");
-    };
-    socket.onclose = function () {
-        console.log("Disconnected");
-    };
-
-    socket.onmessage = function (evt) {
-        try {
-            // Decode the Message
-            var proto = protoBufService.getProto(protoTypes.message);
-            var msg = proto.decode(evt.data);
-            console.log("Received: " + msg);
-        } catch (err) {
-            console.log("Error: " + err);
-        }
-    };
+    socketServer.on('connect', function () {
+        console.log("Connected to the server");
+    });
+    socketServer.on('disconnect', function () {
+        console.log("Disconnected from the server");
+    });
 
     return {
-        send: _send
+        emit: _emit,
+        on: function (event, handler) {
+            if (!eventEnum[event]) {
+                console.error("Unsupported event type " + event);
+                return;
+            }
+            socketServer.on(event, function (arrayBuffer) {
+                handler(protoBufService.decode(protoConfig[event], arrayBuffer));
+            });
+        }
     };
 }]);

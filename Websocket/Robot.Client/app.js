@@ -2,8 +2,9 @@ var eventEnum = require('../Robot.Common/enums/eventEnum');
 var protoBufConfig = require('../Robot.Common/protoBufConfig');
 var protoBufHelper = require('../Robot.Common/protoBufHelper');
 var socketService = require('./services/socketService');
-var _serverAddress = "ws://localhost:8090";
 var commandService = require('./services/commandService');
+
+var _serverAddress = "ws://localhost:8090";
 
 socketService.connect(_serverAddress);
 

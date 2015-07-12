@@ -1,3 +1,4 @@
 module.exports = {
-    orientation: "orientation"
+    orientation: "orientation",
+    distance: "distance"
 };

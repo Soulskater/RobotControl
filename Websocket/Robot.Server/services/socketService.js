@@ -1,34 +1,42 @@
 var socketIo = require('socket.io');
 var eventEnum = require('../../Robot.Common/enums/eventEnum');
+var protoBufConfig = require('../../Robot.Common/protoBufConfig');
+var protoBufHelper = require('../../Robot.Common/protoBufHelper');
 
-var _port;
 var _io;
 
 module.exports = {
-    createServer: function (port) {
-        if (!port) {
-            console.error("Server port is required");
-        }
-        _port = port;
-        _io = socketIo(port);
-
-        _onClientConnection();
-    },
-    on: function (event, handler) {
-        if (!eventEnum[event]) {
-            console.error("Unsupported event type " + event);
-            return;
-        }
-        _io.on(event, handler);
-    },
-    emit: function (event, data) {
-        if (!eventEnum[event]) {
-            console.error("Unsupported event type " + event);
-            return;
-        }
-        _io.sockets.emit(event, data);
-    }
+    createServer: _createServer,
+    on: _on,
+    emit: _emit
 };
+
+function _createServer(httpServer) {
+    if (!httpServer) {
+        throw Error("Http server is null");
+    }
+    _io = socketIo.listen(httpServer);
+    _io.serveClient(false);
+
+    _onClientConnection();
+}
+
+function _on(event, handler) {
+    if (!eventEnum[event]) {
+        console.error("Unsupported event type " + event);
+        return;
+    }
+
+    _io.on(event, handler);
+}
+
+function _emit(event, data) {
+    if (!eventEnum[event]) {
+        console.error("Unsupported event type " + event);
+        return;
+    }
+    _io.emit(event, data);
+}
 
 function _onClientConnection() {
     _io.on('connection', function (socket) {
@@ -36,6 +44,10 @@ function _onClientConnection() {
 
         socket.on("disconnect", function () {
             console.log("Client disconnected", socket.id);
+        });
+
+        socket.on(eventEnum.command, function (arrayBuffer) {
+            _emit(eventEnum.command, arrayBuffer);
         });
     });
 }

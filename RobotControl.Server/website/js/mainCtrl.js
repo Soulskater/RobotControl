@@ -25,6 +25,9 @@ angular.module("RobotControl")
             $sensors.getOrientation().then(function (data) {
                 $scope.orientation = data;
             });
+           /* $sensors.getDistance().then(function (data) {
+                $scope.distance = data;
+            });*/
         }
 
         function _startPollingDistanceMeter() {

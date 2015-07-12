@@ -1,6 +1,0 @@
-import "./distance.proto";
-
-message Message {
-    required string text = 1;
-    optional Distance distance = 2;
-}

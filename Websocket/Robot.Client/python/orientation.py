@@ -65,5 +65,5 @@ class Orientation():
                 math.degrees(pitch),
                 math.degrees(heading)]
 
-lsm = Orientation()
-print lsm.getOrientation()
+orientation = Orientation()
+print orientation.getOrientation()

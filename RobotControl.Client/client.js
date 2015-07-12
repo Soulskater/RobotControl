@@ -33,7 +33,7 @@ module.exports = {
             return false;
         }
         _clientConnectedDeferred.promise.then(function (client) {
-            client.publish("orientation", buffer);
+            client.publish(topic, buffer);
         });
     }
 };
