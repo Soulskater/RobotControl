@@ -4,7 +4,7 @@ var protoBufHelper = require('../Robot.Common/protoBufHelper');
 var socketService = require('./services/socketService');
 var commandService = require('./services/commandService');
 
-var _serverAddress = "ws://localhost:8090";
+var _serverAddress = "ws://robotserver.azurewebsites.net";
 
 socketService.connect(_serverAddress);
 

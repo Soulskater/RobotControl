@@ -220,3 +220,5 @@ pip-log.txt
 node_modules/
 website/packages/
 **/packages
+Websocket/RobotServerDeploy/deployment/Robot.Common
+Websocket/RobotServerDeploy/deployment/Robot.Server

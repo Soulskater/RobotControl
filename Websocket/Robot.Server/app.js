@@ -5,7 +5,7 @@ var protoBufConfig = require('../Robot.Common/protoBufConfig');
 var protoBufHelper = require('../Robot.Common/protoBufHelper');
 
 // HTTP server
-var port = 8090;
+var port = process.env.PORT || 8090;
 var server = httpServerService.createServer(port);
 socketService.createServer(server);
 
