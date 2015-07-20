@@ -10,11 +10,7 @@ class Motor:
         io.setup(pin1, io.OUT)
         io.setup(pin2, io.OUT)
         io.setup(pin3, io.OUT)
-        #self.pin1PWM = io.PWM(pin1, 60)
-        #self.pin2PWM = io.PWM(pin2, 60)
         self.pin3PWM = io.PWM(pin3, 60)
-        #self.pin1PWM.start(0)
-        #self.pin2PWM.start(0)
         self.pin3PWM.start(0)
 
     def changeDirection(self, clockwise):
@@ -24,18 +20,12 @@ class Motor:
         if self.clockwise:
             io.output(self.motorPin1, False)
             io.output(self.motorPin2, True)
-            #self.pin1PWM.ChangeDutyCycle(0)
-            #self.pin2PWM.ChangeDutyCycle(100)
         else:
             io.output(self.motorPin1, True)
             io.output(self.motorPin2, False)
-            #self.pin1PWM.ChangeDutyCycle(100)
-            #self.pin2PWM.ChangeDutyCycle(0)
         self.pin3PWM.ChangeDutyCycle(speed)
 
     def stopPins(self):
         io.output(self.motorPin1, False)
         io.output(self.motorPin2, False)
-        #self.pin1PWM.stop()
-        #self.pin2PWM.stop()
         self.pin3PWM.stop()

@@ -1,21 +1,19 @@
 var sudo = require('sudo');
 var q = require('q');
-var path = require('path');
-
-var pythonServoControlFile = path.join(__dirname, '../../python/4wd_motor_control.py');
 
 module.exports = {
-    changeDirection: function (direction) {
+    runScript: function (filePath, param) {
         var deferred = q.defer();
-
-        var python = sudo(['python', pythonServoControlFile, direction], {
+        console.log(filePath, param);
+        var python = sudo(['python', filePath, param], {
             cachePassword: true
         });
         var output = "";
         python.stdout.on('data', function (data) {
             output += data
         });
-        python.on('close', function (code) {
+        python.on('close', function (code, param1, param2) {
+            console.log(code, param1, param2);
             if (code !== 0) {
                 deferred.reject(code);
             }

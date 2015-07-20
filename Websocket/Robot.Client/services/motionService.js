@@ -1,24 +1,19 @@
+var pythonService = require('./pythonService');
 var motionDirectionEnum = require('../../Robot.Common/enums/motionDirectionEnum');
+var path = require('path');
 
-function _start(motionDirection) {
-    if (!motionDirectionEnum[motionDirection]) {
-        console.warn("Unrecognized motion direction!", motionDirection);
-        return;
-    }
-    console.info("Do motion", motionDirection);
-}
+var pythonServoControlFile = path.join(__dirname, '../python/4wd_motor_control.py');
 
-function _stop() {
-    console.info("Stop motion");
+function _runPython(direction) {
+    pythonService.runScript(pythonServoControlFile, direction);
 }
 
 module.exports = {
     processCommand: function (subCommand) {
-        if (subCommand === motionDirectionEnum.none) {
-            _stop();
+        if (!motionDirectionEnum[subCommand]) {
+            console.warn("Unrecognized motion direction!", subCommand);
+            return;
         }
-        else {
-            _start(subCommand);
-        }
+        _runPython(subCommand);
     }
 };
