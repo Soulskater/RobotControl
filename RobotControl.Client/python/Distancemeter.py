@@ -31,8 +31,8 @@ def measure_average():
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO_TRIGGER = 23
-GPIO_ECHO    = 24
+GPIO_TRIGGER = 8
+GPIO_ECHO    = 7
 
 # Set pins as output and input
 GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  # Trigger

@@ -35,8 +35,8 @@ class Accelerometer(Adafruit_I2C):
 
     def read(self):
         list = self.accel.readList(self.LSM303_REGISTER_ACCEL_OUT_X_L_A | 0x80, 6)
+        print list
         res = [self.accel12(list, 0),  # * self.LSM303_ACCEL_MG_LSB * self.SENSORS_GRAVITY_EARTH,
                self.accel12(list, 2),  # * self.LSM303_ACCEL_MG_LSB * self.SENSORS_GRAVITY_EARTH,
                self.accel12(list, 4)]  #* self.LSM303_ACCEL_MG_LSB * self.SENSORS_GRAVITY_EARTH]
-
         return res
