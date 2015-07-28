@@ -2,6 +2,7 @@ angular.module("RobotControl").controller("navigationCtrl", ["$scope", "webSocke
     angular.extend($scope, {
         distance: 30,
         isConnected: false,
+        isRobotConnected: false,
         onForward: _onForward,
         onBackward: _onBackward,
         onLeft: _onLeft,
@@ -11,13 +12,24 @@ angular.module("RobotControl").controller("navigationCtrl", ["$scope", "webSocke
 
     _init();
     function _init() {
-        webSocketService.onConnected(function () {
-            $scope.isConnected = true;
-        });
+        _init();
+        function _init() {
+            webSocketService.onConnected(function () {
+                $scope.isConnected = true;
+            });
 
-        webSocketService.onDisconnected(function () {
-            $scope.isConnected = false;
-        });
+            webSocketService.onDisconnected(function () {
+                $scope.isConnected = false;
+            });
+
+            webSocketService.onClientConnected(function () {
+                $scope.isRobotConnected = true;
+            });
+
+            webSocketService.onClientDisconnected(function () {
+                $scope.isRobotConnected = false;
+            });
+        }
     }
 
     function _onForward() {

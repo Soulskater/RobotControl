@@ -37,7 +37,14 @@ module.exports = {
 
 function _onConnect() {
     _socket.on('connect', function () {
+        _socket.emit("login", "robot");
         console.log("Connected to " + _serverAddress);
+    });
+    _socket.on('clientConnected', function (clientName) {
+        if (clientName === "robot") {
+            return;
+        }
+        _socket.emit("login", "robot");
     });
 }
 

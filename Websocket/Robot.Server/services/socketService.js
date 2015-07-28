@@ -42,8 +42,14 @@ function _onClientConnection() {
     _io.on('connection', function (socket) {
         console.log("Client connected", socket.id);
 
+        socket.on("login", function (clientName) {
+            socket.clientName = clientName;
+            socket.broadcast.emit('clientConnected', clientName);
+        });
+
         socket.on("disconnect", function () {
-            console.log("Client disconnected", socket.id);
+            console.log("Client disconnected", socket.id, socket.clientName);
+            socket.broadcast.emit('clientDisconnected', socket.clientName);
         });
 
         socket.on(eventEnum.command, function (arrayBuffer) {

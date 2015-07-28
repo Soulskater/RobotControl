@@ -8,10 +8,3 @@ var protoBufHelper = require('../Robot.Common/protoBufHelper');
 var port = process.env.PORT || 8090;
 var server = httpServerService.createServer(port);
 socketService.createServer(server);
-
-/*setInterval(function () {
- socketService.emit(eventEnum.command, protoBufHelper.encode(protoBufConfig.command, {
- name: "move",
- subCommand: "forward"
- }));
- }, 2000);*/

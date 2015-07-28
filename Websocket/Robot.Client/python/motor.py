@@ -10,10 +10,6 @@ class Motor:
         io.setup(pin1, io.OUT)
         io.setup(pin2, io.OUT)
         io.setup(pin3, io.OUT)
-        self.pin1PWM = io.PWM(pin1, 60)
-        self.pin1PWM.start(0)
-        self.pin2PWM = io.PWM(pin2, 60)
-        self.pin2PWM.start(0)
         self.pin3PWM = io.PWM(pin3, 60)
         self.pin3PWM.start(0)
 
@@ -21,8 +17,8 @@ class Motor:
         self.clockwise = clockwise
 
     def forward(self, speed):
-        self.pin1PWM.ChangeDutyCycle(100)
-        self.pin2PWM.ChangeDutyCycle(0)
+        io.output(self.motorPin1, False)
+        io.output(self.motorPin2, True)
         self.pin3PWM.ChangeDutyCycle(speed)
 
     def backward(self, speed):

@@ -19,19 +19,14 @@
         </div>
     </md-toolbar>
 </md-content>
-<div layout="row">
-    <div flex="">
-        Distance
-        <button ng-click="send()">Send</button>
-    </div>
-    <div flex="">
-        Orientation
-    </div>
+<div ng-include="'src/components/telemetry/views/telemetryTemplate.html'">
+
 </div>
+
 <div ng-include="'src/components/navigation/views/navigationTemplate.html'">
 
 </div>
-<md-button class="md-fab connect-btn" ng-class="{'green-btn':isConnected, 'md-accent':!isConnected}"
+<md-button class="md-fab connect-btn" ng-class="{'green-btn':isConnected && isRobotConnected, 'md-accent':!isConnected}"
            aria-label="Connect to server">
     <md-icon md-font-set="material-icons">
         power_settings_new

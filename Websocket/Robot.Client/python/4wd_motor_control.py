@@ -3,6 +3,7 @@ import time
 import sys
 from motor import Motor
 
+io.cleanup()
 io.setmode(io.BOARD)
 
 # motors
@@ -20,29 +21,29 @@ speed = 100 #float(sys.argv[2])
 try:
     if direction == "forward":
         motor1.forward(speed)
-        #motor2.forward(speed)
-        #motor3.forward(speed)
-        #motor4.forward(speed)
+        motor2.forward(speed)
+        motor3.forward(speed)
+        motor4.forward(speed)
     if direction == "backward":
-        #motor1.backward(speed)
-        #motor2.backward(speed)
+        motor1.backward(speed)
+        motor2.backward(speed)
         motor3.backward(speed)
-        #motor4.backward(speed)
+        motor4.backward(speed)
     if direction == "left":
-        #motor1.changeDirection(True)
-        #motor2.changeDirection(True)
-        motor3.changeDirection(False)
-        #motor4.changeDirection(False)
+        motor1.forward(speed)
+        motor2.forward(speed)
+        motor3.backward(speed)
+        motor4.backward(speed)
     if direction == "right":
-        #motor1.changeDirection(False)
-        #motor2.changeDirection(False)
-        motor3.changeDirection(True)
-        #motor4.changeDirection(True)
+        motor1.backward(speed)
+        motor2.backward(speed)
+        motor3.forward(speed)
+        motor4.forward(speed)
     if direction == "none":
         motor1.stop()
-        #motor2.stop()
-        #motor3.stop()
-        #motor4.stop()
+        motor2.stop()
+        motor3.stop()
+        motor4.stop()
     while True:
         time.sleep(0.02)
 except KeyboardInterrupt:
