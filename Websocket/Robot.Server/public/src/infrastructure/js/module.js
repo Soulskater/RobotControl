@@ -6,7 +6,7 @@ angular.module("RobotControl", ["ngMaterial", "ngRoute"])
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
             .primaryPalette('blue')
-            .accentPalette('orange');
+            .accentPalette('red');
     })
     .run(function (protoBufService) {
         protoBufService.loadProtos();

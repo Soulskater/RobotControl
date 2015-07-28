@@ -7,3 +7,6 @@
   bottom: 15px;
   right: 15px;
 }
+.connect-btn.green-btn {
+  background-color: #1AD002 !important;
+}

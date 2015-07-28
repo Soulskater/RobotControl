@@ -1,17 +1,21 @@
 angular.module("RobotControl").controller("dashboardCtrl", ["$scope", "webSocketService", "eventEnum", function ($scope, webSocketService, eventEnum) {
     angular.extend($scope, {
         distance: 30,
-        onForwardStart: function () {
-            webSocketService.emit(eventEnum.command, {
-                name: "move",
-                subCommand: "forward"
-            });
-        },
-        onForwardStop: function () {
-            webSocketService.emit(eventEnum.command, {
-                name: "move",
-                subCommand: "none"
-            });
-        }
+        isConnected: false
     });
+
+    _init();
+    function _init() {
+        webSocketService.connect();
+        webSocketService.onConnected(function () {
+            $scope.isConnected = true;
+        });
+
+        webSocketService.onDisconnected(function () {
+            $scope.isConnected = false;
+        });
+    }
+
+    function _connectClick() {
+    }
 }]);
