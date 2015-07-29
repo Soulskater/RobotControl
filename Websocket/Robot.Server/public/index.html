@@ -5,7 +5,7 @@
     <title>Robot Web Control</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/packages/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="./packages/angular-material/angular-material.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="./packages/angular/angular.js"></script>
@@ -22,22 +22,22 @@
     <script src="./packages/socket.io-client/socket.io.js"></script>
     <script src="./packages/eventEmitter/EventEmitter.js"></script>
 
-    <script src="src/infrastructure/js/module.js"></script>
-    <script src="src/infrastructure/js/routeConfig.js"></script>
-    <script src="src/infrastructure/js/protoConfig.js"></script>
-    <script src="src/infrastructure/js/enums/eventEnum.js"></script>
-    <script src="src/infrastructure/js/serverConfig.js"></script>
-    <script src="src/infrastructure/js/webSocketService.js"></script>
-    <script src="src/infrastructure/js/protoBufService.js"></script>
-    <script src="src/infrastructure/js/eventService.js"></script>
+    <script src="src/infrastructure/scripts/module.js"></script>
+    <script src="src/infrastructure/scripts/configs/routeConfig.js"></script>
+    <script src="src/infrastructure/scripts/configs/protoConfig.js"></script>
+    <script src="src/infrastructure/scripts/enums/eventEnum.js"></script>
+    <script src="src/infrastructure/scripts/configs/serverConfig.js"></script>
+    <script src="src/infrastructure/scripts/services/webSocketService.js"></script>
+    <script src="src/infrastructure/scripts/services/protoBufService.js"></script>
+    <script src="src/infrastructure/scripts/services/eventService.js"></script>
 
     <link rel="stylesheet" href="src/components/dashboard/less/dashboard.css"/>
     <link rel="stylesheet" href="src/components/navigation/less/navigation.css"/>
     <link rel="stylesheet" href="src/components/telemetry/less/telemetry.css"/>
     <link rel="stylesheet" href="src/infrastructure/styles/index.css"/>
-    <script src="src/components/dashboard/js/dashboardCtrl.js"></script>
-    <script src="src/components/navigation/js/navigationCtrl.js"></script>
-    <script src="src/components/telemetry/js/telemetryCtrl.js"></script>
+    <script src="src/components/dashboard/scripts/dashboardCtrl.js"></script>
+    <script src="src/components/navigation/scripts/navigationCtrl.js"></script>
+    <script src="src/components/telemetry/scripts/telemetryCtrl.js"></script>
 </head>
 <body ng-app="RobotControl">
 <div ng-view></div>

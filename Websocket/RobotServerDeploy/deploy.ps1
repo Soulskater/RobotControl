@@ -1,4 +1,10 @@
-Copy-Item ..\Robot.Common .\deployment\Robot.Common -recurse
-Copy-Item ..\Robot.Server .\deployment\Robot.Server -recurse
-Copy-Item .\deployment\Robot.Server\package.json .\deployment\package.json
+$source = '..\Robot.Server\*'
+$dest = '.\deployment'
+Remove-Item .\deployment\* -recurse
+Copy-Item $source $dest -recurse
+Copy-Item .\bin $dest -recurse
+Copy-Item .\Web.cloud.config $dest
+Copy-Item .\Web.config $dest -recurse
+Remove-Item .\deployment\node_modules -recurse
+Remove-Item .\deployment\.idea -recurse
 Publish-AzureServiceProject -ServiceName RobotServer -Location "North Europe" -ForceUpgrade -Launch

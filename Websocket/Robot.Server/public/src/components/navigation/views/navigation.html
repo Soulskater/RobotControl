@@ -1,0 +1,35 @@
+<div class="nav-container" ng-controller="navigationCtrl">
+    <div class="nav-header">
+        <span class="md-headline">Navigation</span>
+    </div>
+
+    <div class="nav-content">
+        <div class="nav-buttons">
+            <md-button ng-disabled="!isConnected || !isRobotConnected" ng-mousedown="onForward()" ng-mouseup="onStop()"
+                       class="up-btn md-raised md-primary">
+                <md-icon md-font-set="material-icons">
+                    keyboard_arrow_up
+                </md-icon>
+            </md-button>
+            <br/>
+            <md-button ng-disabled="!isConnected || !isRobotConnected" ng-mousedown="onLeft()" ng-mouseup="onStop()"
+                       class="md-raised md-primary">
+                <md-icon md-font-set="material-icons">
+                    keyboard_arrow_left
+                </md-icon>
+            </md-button>
+            <md-button ng-disabled="!isConnected || !isRobotConnected" ng-mousedown="onBackward()" ng-mouseup="onStop()"
+                       class="md-raised md-primary">
+                <md-icon md-font-set="material-icons">
+                    keyboard_arrow_down
+                </md-icon>
+            </md-button>
+            <md-button ng-disabled="!isConnected || !isRobotConnected" ng-mousedown="onRight()" ng-mouseup="onStop()"
+                       class="md-raised md-primary">
+                <md-icon md-font-set="material-icons">
+                    keyboard_arrow_right
+                </md-icon>
+            </md-button>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 var socketService = require('./services/socketService');
 var httpServerService = require('./services/httpServerService');
-var eventEnum = require('../Robot.Common/enums/eventEnum');
-var protoBufConfig = require('../Robot.Common/protoBufConfig');
-var protoBufHelper = require('../Robot.Common/protoBufHelper');
+var eventEnum = require('./common/enums/eventEnum');
+var protoBufConfig = require('./common/protoBufConfig');
+var protoBufHelper = require('./common/protoBufHelper');
 
 // HTTP server
 var port = process.env.PORT || 8090;
