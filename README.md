@@ -1,4 +1,4 @@
-# RobotControl
+# RobotControl DEPRECATED(check RobotServer, RobotClient, RobotWebsite)
 Controlling raspberry pi robot in node js
 
 Deploy the server to azure:
